@@ -3,7 +3,7 @@ import shortid from "shortid";
 import ContactForm from "./Components/Form";
 import Filter from "./Components/Filter";
 import ContactList from "./Components/ContactList";
-import "./App.css";
+import s from "./App.module.css";
 
 export default function App() {
   const [contacts, setContacts] = useState(() => {
@@ -54,12 +54,12 @@ export default function App() {
   });
 
   return (
-    <div style={{ marginLeft: "16px" }}>
+    <div className={s.container}>
       <h1>Phonebook</h1>
 
       <ContactForm onSubmit={addContact} />
 
-      <h2>Contacts</h2>
+      <h2 style={{ color: "rgb(150, 150, 250)" }}>Contacts</h2>
       <Filter value={filters} onChange={filterContacts} />
       <ContactList
         contacts={visibleContactsView}
