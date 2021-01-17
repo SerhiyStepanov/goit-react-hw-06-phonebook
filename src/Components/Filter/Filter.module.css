@@ -14,10 +14,10 @@
   margin-left: 6px;
   width: 16px;
   height: 16px;
-  color: rgb(100, 150, 250);
+  color: var(--primary-color);
 }
 
 .input {
-  min-width: 170px;
-  outline-color: rgb(100, 150, 250);
+  min-width: 200px;
+  outline-color: var(--primary-color);
 }
