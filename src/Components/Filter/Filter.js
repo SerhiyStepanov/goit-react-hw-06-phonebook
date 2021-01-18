@@ -1,17 +1,17 @@
 import React from "react";
 import shortid from "shortid";
-import { FiSearch } from "react-icons/fi";
+import { connect } from "react-redux";
+import actions from "../redux/actions";
 import s from "./Filter.module.css";
+// import { FiSearch } from "react-icons/fi";
+// import { ReactComponent } from "*.svg";
 
-export default function Filter({ value, onChange }) {
+function Filter({ value, onChange }) {
   const inputFilterId = shortid.generate();
   return (
     <div className={s.container}>
       <label htmlFor={inputFilterId} className={s.label}>
         Find contacts of name
-        <span className={s.fiSearch}>
-          <FiSearch />
-        </span>
       </label>
       <input
         type="text"
@@ -19,7 +19,30 @@ export default function Filter({ value, onChange }) {
         onChange={onChange}
         id={inputFilterId}
         className={s.input}
+        placeholder="Enter name please"
       />
     </div>
   );
 }
+
+const getVisibleContacts = (contacts, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+  return contacts.filter((contact) => {
+    return contact.name.toLowerCase().includes(normalizedFilter);
+  });
+};
+
+const mapStateToProps = (state) => {
+  const { items, filter } = state.contacts;
+  const visibleContacts = getVisibleContacts(items, filter);
+
+  return {
+    contacts: visibleContacts,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onChange: (e) => dispatch(actions.filterContacts(e.target.value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

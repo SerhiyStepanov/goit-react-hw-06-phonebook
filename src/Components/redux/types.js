@@ -1,5 +1,5 @@
-const ADD = "contact/add";
-const DELETE = "contact/delete";
-const FILTER = "contact/filter";
-
-export default { ADD, DELETE, FILTER };
+export default {
+  ADD: "contact/add",
+  DELETE: "contact/delete",
+  FILTER: "contact/filter",
+};

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import shortid from "shortid";
+// import shortid from "shortid";
 import ContactForm from "./Components/Form";
 import Filter from "./Components/Filter";
 import ContactList from "./Components/ContactList";
 import s from "./App.module.css";
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem("contacts")) ?? [];
-  });
-  const [filters, setFilters] = useState("");
+  // const [contacts, setContacts] = useState(() => {
+  //   return JSON.parse(window.localStorage.getItem("contacts")) ?? [];
+  // });
+  // const [filters, setFilters] = useState("");
 
   // function addContact(data) {
   //   const repeatName = contacts.some((el) => el.name === data.name);
@@ -32,26 +32,26 @@ export default function App() {
   //   setContacts((state) => [...state, contact]);
   // }
 
-  const deleteContact = (contactId) => {
-    setContacts(contacts.filter((contact) => contact.id !== contactId));
-  };
+  // const deleteContact = (contactId) => {
+  //   setContacts(contacts.filter((contact) => contact.id !== contactId));
+  // };
 
-  const filterContacts = (e) => {
-    setFilters(e.target.value);
-  };
+  // const filterContacts = (e) => {
+  //   setFilters(e.target.value);
+  // };
 
-  const visibleContacts = () => {
-    const normalizedFilter = filters.toLowerCase();
-    return contacts.filter((contact) => {
-      return contact.name.toLowerCase().includes(normalizedFilter);
-    });
-  };
+  // const visibleContacts = () => {
+  //   const normalizedFilter = filters.toLowerCase();
+  //   return contacts.filter((contact) => {
+  //     return contact.name.toLowerCase().includes(normalizedFilter);
+  //   });
+  // };
 
-  const visibleContactsView = visibleContacts();
+  // const visibleContactsView = visibleContacts();
 
-  useEffect(() => {
-    window.localStorage.setItem("contacts", JSON.stringify(contacts));
-  });
+  // useEffect(() => {
+  //   window.localStorage.setItem("contacts", JSON.stringify(contacts));
+  // });
 
   return (
     <div className={s.container}>
@@ -62,10 +62,12 @@ export default function App() {
       />
 
       <h2 style={{ color: "rgb(150, 150, 250)" }}>Contacts</h2>
-      <Filter value={filters} onChange={filterContacts} />
+      <Filter
+      // value={filters} onChange={filterContacts}
+      />
       <ContactList
-        contacts={visibleContactsView}
-        onDeleteContact={deleteContact}
+      // contacts={visibleContactsView}
+      // onDeleteContact={deleteContact}
       />
     </div>
   );
