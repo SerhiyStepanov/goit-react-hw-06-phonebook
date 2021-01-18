@@ -11,26 +11,26 @@ export default function App() {
   });
   const [filters, setFilters] = useState("");
 
-  function addContact(data) {
-    const repeatName = contacts.some((el) => el.name === data.name);
-    if (repeatName) {
-      alert(`${data.name} is alreadi in contacts`);
-      return;
-    }
+  // function addContact(data) {
+  //   const repeatName = contacts.some((el) => el.name === data.name);
+  //   if (repeatName) {
+  //     alert(`${data.name} is alreadi in contacts`);
+  //     return;
+  //   }
 
-    if (data.name === "") {
-      alert("Enter  name please");
-      return;
-    }
+  //   if (data.name === "") {
+  //     alert("Enter  name please");
+  //     return;
+  //   }
 
-    const contact = {
-      id: shortid.generate(),
-      name: data.name,
-      number: data.number,
-    };
+  //   const contact = {
+  //     id: shortid.generate(),
+  //     name: data.name,
+  //     number: data.number,
+  //   };
 
-    setContacts((state) => [...state, contact]);
-  }
+  //   setContacts((state) => [...state, contact]);
+  // }
 
   const deleteContact = (contactId) => {
     setContacts(contacts.filter((contact) => contact.id !== contactId));
@@ -57,7 +57,9 @@ export default function App() {
     <div className={s.container}>
       <h1>Phonebook</h1>
 
-      <ContactForm onSubmit={addContact} />
+      <ContactForm
+      // onSubmit={addContact}
+      />
 
       <h2 style={{ color: "rgb(150, 150, 250)" }}>Contacts</h2>
       <Filter value={filters} onChange={filterContacts} />

@@ -1,9 +1,11 @@
 import { useState } from "react";
-import shortid from "shortid";
+import { connect } from "react-redux";
+import actions from "../redux/actions";
 import { IoIosPhonePortrait } from "react-icons/io";
+import shortid from "shortid";
 import s from "./Form.module.css";
 
-export default function ContactForm(props) {
+function ContactForm(props) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
@@ -82,3 +84,8 @@ export default function ContactForm(props) {
     </>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (data) => dispatch(actions.addContact(data)),
+});
+export default connect(null, mapDispatchToProps)(ContactForm);

@@ -1,6 +1,8 @@
+import { connect } from "react-redux";
+import actions from "../redux/actions";
 import s from "./ContactList.module.css";
 
-export default function ContactList({ contacts, onDeleteContact }) {
+function ContactList({ contacts, onDeleteContact }) {
   return (
     <ul className={s.contactList}>
       <h4 className={s.title}>Contacts name :</h4>
@@ -21,3 +23,12 @@ export default function ContactList({ contacts, onDeleteContact }) {
     </ul>
   );
 }
+
+const mapStateToProps = (state) => ({
+  contacts: state.contacts.items,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onDeleteContact: (contactId) => dispatch(actions.deleteContact(contactId)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
