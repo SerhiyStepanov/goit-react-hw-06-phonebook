@@ -31,6 +31,10 @@ function ContactForm(props) {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    if (name === "" || number === "") {
+      alert("Enter name and number please");
+      return;
+    }
     props.onSubmit({ name, number });
     reset();
   };
