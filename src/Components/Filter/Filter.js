@@ -3,8 +3,6 @@ import shortid from "shortid";
 import { connect } from "react-redux";
 import actions from "../redux/actions";
 import s from "./Filter.module.css";
-// import { FiSearch } from "react-icons/fi";
-// import { ReactComponent } from "*.svg";
 
 function Filter({ value, onChange }) {
   const inputFilterId = shortid.generate();
