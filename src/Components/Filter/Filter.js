@@ -1,10 +1,15 @@
 import React from "react";
 import shortid from "shortid";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import actions from "../redux/actions";
 import s from "./Filter.module.css";
 
-function Filter({ value, onChange }) {
+export default function Filter() {
+  const value = useSelector((state) => state.contacts.Filter);
+  const dispatch = useDispatch();
+
+  const onChange = (event) =>
+    dispatch(actions.filterContacts(event.target.value));
   const inputFilterId = shortid.generate();
   return (
     <div className={s.container}>
@@ -22,9 +27,3 @@ function Filter({ value, onChange }) {
     </div>
   );
 }
-
-const mapDispatchToProps = (dispatch) => ({
-  onChange: (event) => dispatch(actions.filterContacts(event.target.value)),
-});
-
-export default connect(null, mapDispatchToProps)(Filter);

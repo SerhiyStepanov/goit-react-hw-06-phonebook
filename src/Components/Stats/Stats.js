@@ -1,7 +1,8 @@
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import s from "./Stats.module.css";
 
-function Stats({ total }) {
+export default function Stats() {
+  const total = useSelector((state) => state.contacts.items.length);
   return (
     <div>
       <p className={s.text}>
@@ -10,9 +11,3 @@ function Stats({ total }) {
     </div>
   );
 }
-
-const mapStateToProps = (state) => ({
-  total: state.contacts.items.length,
-});
-
-export default connect(mapStateToProps)(Stats);

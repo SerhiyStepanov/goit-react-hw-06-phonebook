@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import actions from "../redux/actions";
 import { IoIosPhonePortrait } from "react-icons/io";
 import shortid from "shortid";
 import s from "./Form.module.css";
 
-function ContactForm(props) {
+export default function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const dispatch = useDispatch();
 
   const inputNameId = shortid.generate();
   const inputNumberId = shortid.generate();
@@ -29,13 +30,13 @@ function ContactForm(props) {
     }
   };
 
-  const onFormSubmit = (e) => {
-    e.preventDefault();
+  const onFormSubmit = (event) => {
+    event.preventDefault();
     if (name === "" || number === "") {
-      alert("Enter name and number please");
+      alert("Enter name and number please ! ");
       return;
     }
-    props.onSubmit({ name, number });
+    dispatch(actions.addContact({ name, number }));
     reset();
   };
 
@@ -88,9 +89,3 @@ function ContactForm(props) {
     </>
   );
 }
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (data) => dispatch(actions.addContact(data)),
-});
-
-export default connect(null, mapDispatchToProps)(ContactForm);

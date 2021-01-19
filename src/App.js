@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-// import shortid from "shortid";
 import ContactForm from "./Components/Form";
 import Filter from "./Components/Filter";
 import Stats from "./Components/Stats";
@@ -58,19 +56,12 @@ export default function App() {
     <div className={s.container}>
       <h1>Phonebook</h1>
 
-      <ContactForm
-      // onSubmit={addContact}
-      />
+      <ContactForm />
 
-      <h2 style={{ color: "rgb(150, 150, 250)" }}>Contacts</h2>
-      <Filter
-      // value={filters} onChange={filterContacts}
-      />
+      <h2>Contacts</h2>
+      <Filter />
       <Stats />
-      <ContactList
-      // contacts={visibleContactsView}
-      // onDeleteContact={deleteContact}
-      />
+      <ContactList />
     </div>
   );
 }
