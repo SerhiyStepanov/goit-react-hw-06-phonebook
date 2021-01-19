@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import s from "./Stats.module.css";
 
-const Stats = ({ total }) => {
+function Stats({ total }) {
   return (
     <div>
       <p className={s.text}>
@@ -9,7 +9,7 @@ const Stats = ({ total }) => {
       </p>
     </div>
   );
-};
+}
 
 const mapStateToProps = (state) => ({
   total: state.contacts.items.length,
