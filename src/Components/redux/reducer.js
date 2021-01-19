@@ -21,7 +21,7 @@ const items = createReducer([], {
 //   }
 // };
 const filter = createReducer("", {
-  [actions.filterContacts]: (_, { payload }) => payload,
+  [actions.filterContacts]: (state, { payload }) => payload,
 });
 
 // const filter = (state = "", { type, payload }) => {

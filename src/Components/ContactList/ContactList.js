@@ -24,7 +24,7 @@ function ContactList({ contacts, onDeleteContact }) {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: state.contacts.items,
+  items: state.contacts.items,
 });
 
 const mapDispatchToProps = (dispatch) => ({
