@@ -20,10 +20,14 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  reducer: {
-    contacts: persistReducer(persistConfig, contactReducer),
-  },
+  contacts: persistReducer(persistConfig, contactReducer),
 });
+
+// const rootReducer = combineReducers({
+//   reducer: {
+//     contacts: persistReducer(persistConfig, contactReducer),
+//   },
+// });
 
 // const persistedReducer = persistReducer(persistConfig, contactReducer);
 
