@@ -25,10 +25,10 @@ function Filter({ value, onChange }) {
   );
 }
 
-const getVisibleContacts = (contacts, filter) => {
+const getVisibleContacts = (items, filter) => {
   const normalizedFilter = filter.toLowerCase();
-  return contacts.filter((contact) => {
-    return contact.name.toLowerCase().includes(normalizedFilter);
+  return items.filter((item) => {
+    return item.name.toLowerCase().includes(normalizedFilter);
   });
 };
 

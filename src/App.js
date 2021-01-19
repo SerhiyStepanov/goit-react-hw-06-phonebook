@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import shortid from "shortid";
 import ContactForm from "./Components/Form";
 import Filter from "./Components/Filter";
+import Stats from "./Components/Stats";
 import ContactList from "./Components/ContactList";
 import s from "./App.module.css";
 
@@ -65,6 +66,7 @@ export default function App() {
       <Filter
       // value={filters} onChange={filterContacts}
       />
+      <Stats />
       <ContactList
       // contacts={visibleContactsView}
       // onDeleteContact={deleteContact}
