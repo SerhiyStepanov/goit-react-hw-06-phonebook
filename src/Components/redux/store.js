@@ -16,18 +16,19 @@ import contactReducer from "./reducer";
 const persistConfig = {
   key: "contact",
   storage,
+  blacklist: ["filter"],
 };
 
 const rootReducer = combineReducers({
   reducer: {
-    contacts: contactReducer,
+    contacts: persistReducer(persistConfig, contactReducer),
   },
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, contactReducer);
 
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
