@@ -23,9 +23,24 @@ function ContactList({ items, onDeleteContact }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  items: state.contacts.items,
-});
+const getVisibleContacts = (items, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+  return items.filter((item) => {
+    return item.name.toLowerCase().includes(normalizedFilter);
+  });
+};
+
+const mapStateToProps = (state) => {
+  const { items, filter } = state.contacts;
+  const visibleContacts = getVisibleContacts(items, filter);
+  return {
+    items: visibleContacts,
+  };
+};
+
+// const mapStateToProps = (state) => ({
+//   items: state.contacts.items,
+// });
 
 const mapDispatchToProps = (dispatch) => ({
   onDeleteContact: (contactId) => dispatch(actions.deleteContact(contactId)),

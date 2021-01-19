@@ -25,23 +25,23 @@ function Filter({ value, onChange }) {
   );
 }
 
-const getVisibleContacts = (items, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-  return items.filter((item) => {
-    return item.name.toLowerCase().includes(normalizedFilter);
-  });
-};
+// const getVisibleContacts = (items, filter) => {
+//   const normalizedFilter = filter.toLowerCase();
+//   return items.filter((item) => {
+//     return item.name.toLowerCase().includes(normalizedFilter);
+//   });
+// };
 
-const mapStateToProps = (state) => {
-  const { items, filter } = state.contacts;
-  const visibleContacts = getVisibleContacts(items, filter);
-  return {
-    items: visibleContacts,
-  };
-};
+// const mapStateToProps = (state) => {
+//   const { items, filter } = state.contacts;
+//   const visibleContacts = getVisibleContacts(items, filter);
+//   return {
+//     items: visibleContacts,
+//   };
+// };
 
 const mapDispatchToProps = (dispatch) => ({
   onChange: (e) => dispatch(actions.filterContacts(e.target.value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect(null, mapDispatchToProps)(Filter);
