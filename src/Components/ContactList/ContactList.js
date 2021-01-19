@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import actions from "../redux/actions";
 import s from "./ContactList.module.css";
 
-function ContactList({ contacts, onDeleteContact }) {
+function ContactList({ items, onDeleteContact }) {
   return (
     <ul className={s.contactList}>
-      {contacts.map(({ name, number, id }) => (
+      {items.map(({ name, number, id }) => (
         <li key={id} className={s.list}>
           <p className={s.text}>
             {name} : {number}
