@@ -12,7 +12,6 @@ export default function ContactForm() {
   const items = useSelector((state) => state.contacts.items);
   const dispatch = useDispatch();
 
-  console.log(items);
   const inputNameId = shortid.generate();
   const inputNumberId = shortid.generate();
 

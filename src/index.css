@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Unkempt:wght@400;700&display=swap");
 
 :root {
-  --primary-color: rgb(150, 150, 250);
+  --primary-color: #9696fa;
   --cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
