@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import actions from "../redux/actions";
 import { IoIosPhonePortrait } from "react-icons/io";
 import shortid from "shortid";
@@ -8,8 +8,11 @@ import s from "./Form.module.css";
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
+  const items = useSelector((state) => state.contacts.items);
   const dispatch = useDispatch();
 
+  console.log(items);
   const inputNameId = shortid.generate();
   const inputNumberId = shortid.generate();
 
@@ -32,6 +35,12 @@ export default function ContactForm() {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+    const repeatName = items.some((item) => item.name === name);
+    if (repeatName) {
+      alert(`${name} is alreadi in contacts`);
+      return;
+    }
+
     if (name === "" || number === "") {
       alert("Enter name and number please ! ");
       return;
